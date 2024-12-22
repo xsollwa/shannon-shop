@@ -1540,3 +1540,36 @@ a.btn-link.text-light:after {
   background-size: cover;
   transition: transform .3s ease-out;
 }
+
+
+.image-holder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hover-image,
+.hover-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-video {
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when not visible */
+}
+
+.image-holder:hover .hover-image {
+  opacity: 0;
+}
+
+.image-holder:hover .hover-video {
+  opacity: 1;
+}
+
