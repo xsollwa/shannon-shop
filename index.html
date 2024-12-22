@@ -1476,6 +1476,20 @@
       </div>
     </div>
   </footer>
+
+  <div class="popup-overlay" id="discountPopup">
+    <div class="popup-container">
+      <h2>Get 15% Off Your First Purchase!</h2>
+      <p>Enter your email below to verify and claim your discount.</p>
+      <form id="emailForm">
+        <input type="email" placeholder="Enter your email" required class="email-input">
+        <button type="submit" class="btn verify-btn">Verify</button>
+      </form>
+      <button class="btn close-btn" id="closePopup">No, I do not want a discount</button>
+    </div>
+  </div>
+
+
   <script src="js/jquery.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/SmoothScroll.js"></script>
@@ -1502,6 +1516,32 @@ imageHolders.forEach((holder) => {
   holder.addEventListener('mouseleave', () => {
     video.pause();
     video.currentTime = 0; 
+  });
+});
+
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("discountPopup");
+  const closeBtn = document.getElementById("closePopup");
+  const emailForm = document.getElementById("emailForm");
+
+  setTimeout(() => {
+    popup.classList.add("visible");
+  }, 2000); 
+
+  
+  closeBtn.addEventListener("click", () => {
+    popup.classList.remove("visible");
+  });
+
+ 
+  emailForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const emailInput = document.querySelector(".email-input").value;
+    alert(`Thank you! A discount has been sent to ${emailInput}`);
+    popup.classList.remove("visible");
   });
 });
 
